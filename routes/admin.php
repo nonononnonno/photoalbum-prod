@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\PreviewController;
+use App\Http\Controllers\Admin\UploadController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Admin\Auth\ConfirmablePasswordController;
@@ -67,6 +69,13 @@ Route::middleware('auth:admin')->group(function () {
 
     Route::controller(AdminController::class)->group(function (){
         Route::get('/', 'getAdmin')->name('dashboard');
+    });
+    Route::controller(UploadController::class)->group(function (){
+        Route::get('/upload', 'showUpload')->name('upload');
+        Route::post('/upload', 'uploadImage')->name('upload');
+    });
+    Route::controller(PreviewController::class)->group(function (){
+        Route::get('/preview', 'showPreview')->name('preview');
     });
 });
 
