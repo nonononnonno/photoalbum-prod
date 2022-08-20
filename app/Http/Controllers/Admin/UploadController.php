@@ -15,6 +15,10 @@ class UploadController extends Controller
 
     public function uploadImage(Request $request)
     {
+        $validated = $request->validate([
+            'image' => 'required'
+        ]);
+
         $path = $request->file('image')->store('img','public');
         Image::create([
            'img_path' => $path,
