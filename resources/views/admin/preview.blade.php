@@ -10,7 +10,5 @@
                 <img src="{{Storage::url($image->img_path)}}" class="w-full" style="margin: 2rem 0">
             @endforeach
         </div>
-
     </div>
-
 </x-app-layout>
